@@ -6,7 +6,7 @@
 /*   By: ihorcada <ihorcada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 14:19:38 by ihorcada          #+#    #+#             */
-/*   Updated: 2020/02/10 17:35:07 by ihorcada         ###   ########.fr       */
+/*   Updated: 2020/02/12 16:06:12 by ihorcada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,15 @@
 int	get_next_line(int fd, char **line)
 {
 	int		ret;
-	char	*buffer;
-
-	line = NULL;
-	buffer = 0;
-	if (!(buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE)))
-		return (-1);
-	if (!(fd = open("test.txt", O_RDONLY)))
-		return (-1);
-	if (!(ret = read(fd, buffer, BUFFER_SIZE)))
-		return (-1);
-	buffer[ret] = '\0';
-
-	ft_putnbr_fd(ret, fd);
-	ft_putstr_fd(buffer, fd);
+	char	*buf[BUFFER_SIZE];
+	
+	while(buf = (char *)malloc(sizeof(char) * BUFFER_SIZE) && fd != -1)
+	{
+		
+	}
+	buf[ret] = '\0';
 	return (0);
 }
+
+	
+//	while (ret = read(fd, buf, BUFFER_SIZE))
