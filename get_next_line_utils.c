@@ -6,44 +6,69 @@
 /*   By: ihorcada <ihorcada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 14:24:52 by ihorcada          #+#    #+#             */
-/*   Updated: 2020/02/12 16:06:15 by ihorcada         ###   ########.fr       */
+/*   Updated: 2020/02/13 14:13:32 by ihorcada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	ft_putchar_fd(char c, int fd)
+char	*ft_strdup(const char *src)
 {
-	write(fd, &c, 1);
-}
-
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	int i;
+	char	*string;
+	int		src_size;
+	int		i;
 
 	i = 0;
-	if (s == NULL)
-		return ;
-	while (s[i])
+	src_size = 0;
+	while (src[src_size])
 	{
-		ft_putchar_fd(s[i], fd);
+		src_size++;
+	}
+	string = (char *)malloc(src_size * sizeof(*src) + 1);
+	if (!string)
+		return (NULL);
+	while (i < src_size)
+	{
+		string[i] = src[i];
 		i++;
 	}
+	string[src_size] = '\0';
+	return (string);
+	free(string);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	long int	long_n;
+	char			*j;
+	unsigned int	i;
 
-	if (n < 0)
+	i = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	j = (char *)malloc(sizeof(*j) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!j)
+		return (NULL);
+	while (*s1)
 	{
-		write(fd, "-", 1);
-		long_n = (unsigned int)(n * -1);
+		j[i++] = *s1++;
 	}
-	else
-		long_n = (unsigned int)n;
-	if (long_n >= 10)
-		ft_putnbr_fd(long_n / 10, fd);
-	ft_putchar_fd((char)(long_n % 10 + 48), fd);
+	while (*s2)
+	{
+		j[i++] = *s2++;
+	}
+	j[i] = '\0';
+	return (j);
 }
+
+size_t	ft_strlen(const char *str)
+{
+	size_t i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
