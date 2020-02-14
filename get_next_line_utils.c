@@ -6,7 +6,7 @@
 /*   By: ihorcada <ihorcada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 14:24:52 by ihorcada          #+#    #+#             */
-/*   Updated: 2020/02/13 14:13:32 by ihorcada         ###   ########.fr       */
+/*   Updated: 2020/02/14 17:57:30 by ihorcada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,38 +37,26 @@ char	*ft_strdup(const char *src)
 	free(string);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char			*j;
-	unsigned int	i;
-
-	i = 0;
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	j = (char *)malloc(sizeof(*j) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!j)
-		return (NULL);
-	while (*s1)
-	{
-		j[i++] = *s1++;
-	}
-	while (*s2)
-	{
-		j[i++] = *s2++;
-	}
-	j[i] = '\0';
-	return (j);
-}
-
 size_t	ft_strlen(const char *str)
 {
 	size_t i;
 
 	i = 0;
 	while (str[i] != '\0')
-	{
 		i++;
-	}
 	return (i);
 }
 
+char	*newline_check(const char *s)
+{
+	char	*str;
+
+	str = (char *)s;
+	while (*str != '\n')
+	{
+		if (*str == '\0')
+			return (NULL);
+		str++;
+	}
+	return (str);
+}
