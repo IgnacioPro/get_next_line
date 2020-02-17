@@ -6,7 +6,7 @@
 /*   By: ihorcada <ihorcada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 14:19:38 by ihorcada          #+#    #+#             */
-/*   Updated: 2020/02/17 15:53:36 by ihorcada         ###   ########.fr       */
+/*   Updated: 2020/02/17 15:58:42 by ihorcada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,15 @@ int get_next_line(int fd, char **line)
 			{
 				if (buf_copy)
 					free(buf_copy);
+					buf_copy = NULL;
 				return(-1);
 			}	
 	free(buf);
 
 	if (newline_check(buf_copy, '\n'))
 	{
-		*line = ft_substr(buf_copy, 0, ft_strlen(buf_copy) - (ft_strlen(newline_check(buf_copy, '\n'))));
+		*line = ft_substr(buf_copy, 0, ft_strlen(buf_copy) 
+			- (ft_strlen(newline_check(buf_copy, '\n'))));
 		temp = ft_strdup(newline_check(buf_copy, '\n') + 1);
 		free(buf_copy);
 		buf_copy = temp;
