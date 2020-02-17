@@ -6,7 +6,7 @@
 /*   By: ihorcada <ihorcada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 14:19:38 by ihorcada          #+#    #+#             */
-/*   Updated: 2020/02/17 13:49:32 by ihorcada         ###   ########.fr       */
+/*   Updated: 2020/02/17 15:53:36 by ihorcada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@ int get_next_line(int fd, char **line)
 	int bytes_read;
 	static char *buf_copy;
 	char *temp;
-	char *found_newline;
 
 	if (line == NULL || fd < 0 || BUFFER_SIZE <= 0 ||
 		(!(buf = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1))))
 		return (-1);
-	found_newline = 0;
 
 	while ((bytes_read = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
