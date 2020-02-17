@@ -6,7 +6,7 @@
 /*   By: ihorcada <ihorcada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 14:24:52 by ihorcada          #+#    #+#             */
-/*   Updated: 2020/02/14 17:57:30 by ihorcada         ###   ########.fr       */
+/*   Updated: 2020/02/17 12:38:19 by ihorcada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ char	*ft_strdup(const char *src)
 		i++;
 	}
 	string[src_size] = '\0';
+	//free(string);//modifica kevin
 	return (string);
-	free(string);
+	//free(string)
 }
 
 size_t	ft_strlen(const char *str)
@@ -47,16 +48,65 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*newline_check(const char *s)
+char	*newline_check(const char *s, int c)
 {
-	char	*str;
-
-	str = (char *)s;
-	while (*str != '\n')
+	while (*s)
 	{
-		if (*str == '\0')
-			return (NULL);
-		str++;
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
 	}
+	if ((char)c == '\0')
+		return ((char *)s);
+	return (NULL);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t			i;
+	char			*str;
+
+	if (!s)
+		return (NULL);
+	if (!(str = malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	i = 0;
+	if (start < ft_strlen(s))
+	{
+		while (s[start] && i < len)
+		{
+			if(s[i] == '\n')
+			{
+				str[i] = '\0';
+				return (str);
+			}
+			str[i] = s[start];
+			i++;
+			start++;
+		}
+	}
+	str[i] = '\0';
 	return (str);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char			*j;
+	unsigned int	i;
+
+	i = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	j = (char *)malloc(sizeof(*j) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!j)
+		return (NULL);
+	while (*s1)
+		j[i++] = *s1++;
+	while (*s2)
+		j[i++] = *s2++;
+	j[i] = '\0';
+	//free((void *)s1);
+	return (j);
 }

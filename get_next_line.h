@@ -6,7 +6,7 @@
 /*   By: ihorcada <ihorcada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 14:25:26 by ihorcada          #+#    #+#             */
-/*   Updated: 2020/02/13 18:33:03 by ihorcada         ###   ########.fr       */
+/*   Updated: 2020/02/16 17:11:47 by ihorcada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@
 
 int		get_next_line(int fd, char **line);
 char	*ft_strdup(const char *src);
-char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *str);
+char	*newline_check(const char *s, int c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
