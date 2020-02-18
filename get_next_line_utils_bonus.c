@@ -6,7 +6,7 @@
 /*   By: ihorcada <ihorcada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 14:24:52 by ihorcada          #+#    #+#             */
-/*   Updated: 2020/02/18 19:25:05 by ihorcada         ###   ########.fr       */
+/*   Updated: 2020/02/18 19:31:59 by ihorcada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t			i;
 	char			*str;
 
+	if (!s || !(str = malloc(sizeof(char) * (len + 1))))
+		return (NULL);
 	if (start > ft_strlen(s))
 		return (ft_strdup(""));
 	i = 0;
